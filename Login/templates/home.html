@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block title %}HOME{% endblock %}
+{% block content %}
+  <div class="row">
+    <div class="col-sm-8 mb-10">
+        <h2 class="text-center" style="color: rgba(4, 58, 26, 0.932); margin-left:100px;">Welcome {{user.username}}</h2>
+        <h4 class="text-center" style="color: black; margin-left:100px;">Repositories for </h4>
+           <ul>
+               {% for repo in repositories %}
+                 <li>
+                   <a href="{% url 'social:begin' 'github' %}">{{ repo.name }}</a>
+                   {% if repo.description %}
+                     <p>{{ repo.description }}</p>
+                   {% endif %}
+                 </li>
+               {% endfor %}
+             </ul>
+    </div>
+  </div>
+{% endblock %}
